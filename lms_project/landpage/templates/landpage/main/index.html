@@ -1,0 +1,89 @@
+{% extends 'landpage/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<!-- Header -->
+<header>
+    <div class="container">
+        <div class="intro-text">
+            <div class="intro-lead-in">
+                Welcome to our classroom!
+            </div>
+            <div class="intro-heading">
+                It's time to start learning
+            </div>
+            <a onclick="ajax_popup_register();" class="btn btn-xl">
+                Register
+            </a>
+        </div>
+    </div>
+</header>
+
+
+
+<!-- Social Media -->
+
+
+
+
+<!-- Services Section -->
+<section id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Why Enroll today?</h2>
+                <h3 class="section-subheading text-muted">Because we believe education is for everyone</h3>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fa fa-users fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="service-heading">Free for Everyone</h4>
+                <p class="text-muted">We at LMS believe in the principle of Neutron Learning, also known as learning without charge. You can take any course you want, for free.</p>
+            </div>
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fa fa-graduation-cap fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="service-heading">Eductional</h4>
+                <p class="text-muted">LMS can be used to link to videos all around the world, compile them, and add tests and assignments to create personalized courses.</p>
+            </div>
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fa fa-code-fork fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="service-heading">Open Source</h4>
+                <p class="text-muted">LMS is a tool that can be used by anyone and seen by everyone. Open Source Code ensures all can participate securely.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!----------------------------------------------------------------------------->
+
+<!-- Modal -->
+<div id="ajax_response_login"></div>
+<div id="ajax_response_register"></div>
+<!-- end modal -->
+
+<!----------------------------------------------------------------------------->
+
+{% include "landpage/main/js.html" %}
+
+{% if HAS_ADVERTISMENT %}
+<!-- Ads -->
+<br/>
+<div class="row">
+    <div class="col-lg-12">
+        <div style="text-align: center;">
+            
+        </div>
+    </div>
+</div>
+<!-- /.Ads-->
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-lg-12 text-center">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <!-- Course Picture -->
+                <div class="col-lg-3 text-left">
+                {% if course.image != None and course.image != '' %}
+                    <img src="{{ course.image.url }}" height="100%" width="100%" />
+                {% else %}
+                    Missing Image!
+                {% endif %}
+                </div>
+                <!-- Course Info -->
+                <div class="col-lg-9 text-left">
+                    <h2>{{ course.title }}<br/>
+                        {% if teacher == course.teacher %}
+                            <small>[You cannot enroll in a class you currently teach!]</small>
+                        {% else %}
+                            <small>{{ course.sub_title }}</small>
+                        {% endif %}
+                    </h2>
+                    {% if course.is_official %}<p align="left"><span class="badge">Offical</span></p>{% endif %}
+                    <p>{{ course.description }}<p>
+                    <p>Durration: {{ course.start_date }} to {{ course.finish_date }}</p>
+                    <p align="right">
+                    <form action= {% if student not in course.students.all %}"enroll" {% else %} "" {% endif %}
+                    
+                    method="post">
+                        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" />
+                        <input name="key" class="form-control" value="" placeholder="input the key to go to course" /> <br>
+                        <input name="course_id" type="hidden" class="form-control" value="{{ course.id }}"/>
+                        {% if student not in course.students.all %}
+                                    <input type="submit" class="btn btn-lg btn-success" value="Enroll" 
+                                    {% if teacher == course.teacher %}
+                                            disabled=""
+                                        {% endif %}
+                                    />
+                            {% else %}
+                                <input type="submit" class="btn btn-lg btn-primary" value="continue" 
+                                {% if teacher == course.teacher %}
+                                        disabled=""
+                                    {% endif %}
+                                />
+                            {% endif %}
+                    </form>
+                    </p>
+                </div>
+                <!-- /.Course Info -->
+            </div>
+        </div>
+    </div>
+</div>
